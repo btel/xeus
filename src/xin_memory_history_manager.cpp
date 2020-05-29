@@ -43,13 +43,10 @@ namespace xeus
 
         int count = std::min(n, static_cast<int>(m_history.size()));
 
-        if (n > count) 
-            history = m_history;
-        else
-            std::copy(
-                m_history.rbegin(), 
-                std::next(m_history.rbegin(), n),
-                std::front_inserter(history));
+        std::copy(
+            m_history.rbegin(), 
+            std::next(m_history.rbegin(), count),
+            std::front_inserter(history));
         
         reply["status"] = "ok";
         reply["history"] = history;
